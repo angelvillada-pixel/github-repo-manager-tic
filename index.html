@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Repositorios GitHub con Octokit y Vite</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>🚀 GitHub Repo Manager</h1>
+        <p>Administra y crea tus repositorios usando la API oficial con Octokit</p>
+      </header>
+      <main class="dashboard">
+        <!-- Panel de Autenticación y Creación -->
+        <section class="control-panel">
+          <div class="card">
+            <h2>🔑 Autenticación (.env)</h2>
+            <div class="form-group">
+              <p class="env-info">El token se carga automáticamente desde el archivo <code>.env</code> del proyecto.</p>
+              <button id="btn-conectar" class="btn primary">Conectar con GitHub</button>
+            </div>
+            <div id="auth-status" class="status disconnected">Desconectado</div>
+          </div>
+
+          <div class="card" id="create-card" style="opacity: 0.5; pointer-events: none;">
+            <h2>✨ Nuevo Repositorio</h2>
+            <div class="form-group">
+              <label for="repo-name">Nombre del Repositorio:</label>
+              <input type="text" id="repo-name" placeholder="mi-nuevo-repo" />
+
+              <label for="repo-desc">Descripción:</label>
+              <textarea id="repo-desc" placeholder="Descripción opcional del proyecto..."></textarea>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="repo-private" />
+                <label for="repo-private">Repositorio Privado</label>
+              </div>
+
+              <button id="btn-crear" class="btn success">Crear Repositorio</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel de Visualización y Listado -->
+        <section class="repos-panel">
+          <div class="card">
+            <div class="repos-header">
+              <h2>📂 Mis Repositorios</h2>
+              <input type="text" id="search-input" placeholder="Buscar repositorio..." disabled />
+            </div>
+            <div id="repos-container" class="repos-grid">
+              <p class="placeholder-text">Conecta tu token para visualizar tus repositorios.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
